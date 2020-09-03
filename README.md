@@ -20,9 +20,9 @@ Simple Torrent is a self-hosted remote torrent client, written in Go (golang). S
 
 ## Configuration
 
-Most of the items can be edited in WEB-UI on the fly in the config board.
+Most of the items can be edited in Web-UI on the fly in the config board.
 
-You can also configure SimpleTorrent by editing this file `/var/www/simpletorrent/cloud-torrent.json` using the [documentation](https://github.com/boypt/simple-torrent/wiki/Config-File).
+You can also configure Simple Torrent by editing this file `/var/www/simple-torrent/config.json` using the [documentation](https://github.com/boypt/simple-torrent/wiki/Config-File).
 
 ## Documentation
 
