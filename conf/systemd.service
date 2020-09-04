@@ -8,7 +8,7 @@ User=__APP__
 Group=__APP__
 Environment=PORT=__PORT__
 WorkingDirectory=__FINAL_PATH__
-ExecStart=__FINAL_PATH__/__APP__ -c __FINAL_PATH__/config.json --host 127.0.0.1 --auth __ADMIN__:__PASSWORD__
+ExecStart=__FINAL_PATH__/__APP__ -c __FINAL_PATH__/config.json --host 127.0.0.1
 Restart=always
 RestartSec=3
 
