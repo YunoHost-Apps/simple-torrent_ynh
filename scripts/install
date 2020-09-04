@@ -136,7 +136,7 @@ ynh_script_progression --message="Securing files and directories..." --weight=1
 chown -R $app: $final_path
 chown -R $app: /home/yunohost.$app
 chmod +x $final_path/$app
-chmod -R 644 /home/yunohost.$app/{torrents,downloads}
+chmod -R 755 /home/yunohost.$app/{torrents,downloads}
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
