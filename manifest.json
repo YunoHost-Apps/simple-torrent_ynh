@@ -6,7 +6,7 @@
         "en": "Self-hosted remote torrent client",
         "fr": "Client torrent distant auto-hébergé"
     },
-    "version": "1.2.11~ynh1",
+    "version": "1.2.11~ynh2",
     "url": "https://github.com/boypt/simple-torrent",
     "license": "AGPL-3.0-only",
     "maintainer": {
@@ -15,7 +15,7 @@
     "requirements": {
         "yunohost": ">= 3.8.1"
     },
-    "multi_instance": false,
+    "multi_instance": true,
     "services": [
         "nginx"
     ],
@@ -47,25 +47,11 @@
                     "en": "Is it a public site?",
                     "fr": "Est-ce un site public ?"
                 },
+                "help": {
+                    "en": "If enabled, Simple Torrent will be accessible by people who do not have an account. This can be changed later via the webadmin.",
+                    "fr": "Si cette case est cochée, Simple Torrent sera accessible aux personnes n’ayant pas de compte. Vous pourrez changer ceci plus tard via la webadmin."
+                },
                 "default": true
-            },
-            {
-                "name": "admin",
-                "type": "user",
-                "ask": {
-                    "en": "Choose an admin user",
-                    "fr": "Choisissez l'administrateur"
-                },
-                "example": "johndoe"
-            },
-            {
-                "name": "password",
-                "type": "password",
-                "ask": {
-                    "en": "Set the administrator password",
-                    "fr": "Définissez le mot de passe administrateur"
-                },
-                "example": "Choose a password"
             }
         ]
     }

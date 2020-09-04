@@ -23,8 +23,6 @@ ynh_abort_if_errors
 domain=$YNH_APP_ARG_DOMAIN
 path_url=$YNH_APP_ARG_PATH
 is_public=$YNH_APP_ARG_IS_PUBLIC
-password=$YNH_APP_ARG_PASSWORD
-admin=$YNH_APP_ARG_ADMIN
 architecture=$(ynh_detect_arch)
 
 app=$YNH_APP_INSTANCE_NAME
@@ -47,7 +45,6 @@ ynh_script_progression --message="Storing installation settings..." --weight=2
 
 ynh_app_setting_set --app=$app --key=domain    --value=$domain
 ynh_app_setting_set --app=$app --key=path      --value=$path_url
-ynh_app_setting_set --app=$app --key=admin     --value=$admin
 ynh_app_setting_set --app=$app --key=is_public --value=$is_public
 
 #=================================================
@@ -125,8 +122,6 @@ ynh_script_progression --message="Configuring a systemd service..." --weight=1
 ynh_replace_string --match_string="__APP__" --replace_string="$app" --target_file="../conf/systemd.service"
 ynh_replace_string --match_string="__FINAL_PATH__" --replace_string="$final_path" --target_file="../conf/systemd.service"
 ynh_replace_string --match_string="__PORT__" --replace_string="$port" --target_file="../conf/systemd.service"
-ynh_replace_string --match_string="__ADMIN__" --replace_string="$admin" --target_file="../conf/systemd.service"
-ynh_replace_string --match_string="__PASSWORD__" --replace_string="$password" --target_file="../conf/systemd.service"
 
 ynh_add_systemd_config
 
@@ -141,7 +136,7 @@ ynh_script_progression --message="Securing files and directories..." --weight=1
 chown -R $app: $final_path
 chown -R $app: /home/yunohost.$app
 chmod +x $final_path/$app
-chmod -R 777 /home/yunohost.$app/{torrents,downloads}
+chmod -R 755 /home/yunohost.$app/{torrents,downloads}
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST

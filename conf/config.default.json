@@ -3,8 +3,8 @@
   "enginedebug": false,
   "MuteEngineLog": true,
   "donecmd": "",
-  "SeedRatio": 1.5,
-  "uploadrate": "High",
+  "SeedRatio": "",
+  "uploadrate": "",
   "donecmdthreshold": "30s",
   "watchdirectory": "/home/yunohost.__APP__/torrents",
   "downloaddirectory": "/home/yunohost.__APP__/downloads",
@@ -17,5 +17,4 @@
   "scraperurl": "https://raw.githubusercontent.com/boypt/simple-torrent/master/scraper-config.json",
   "seedratio": 0,
   "trackerlisturl": "https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt"
-
 }
