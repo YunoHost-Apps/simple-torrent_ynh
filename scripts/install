@@ -99,7 +99,7 @@ ynh_add_nginx_config
 # CREATE DIRECTORIES
 #=================================================
 
-mkdir -p /home/yunohost.${app}/{torrents,downloads}
+mkdir -p /home/yunohost.app/$app/{torrents,downloads}
 
 #=================================================
 # MODIFY A CONFIG FILE
@@ -134,9 +134,9 @@ ynh_script_progression --message="Securing files and directories..." --weight=1
 
 # Set permissions to app files
 chown -R $app: $final_path
-chown -R $app: /home/yunohost.$app
+chown -R $app: /home/yunohost.app/$app
 chmod +x $final_path/$app
-chmod -R 755 /home/yunohost.$app/{torrents,downloads}
+chmod -R 755 /home/yunohost.app/$app/{torrents,downloads}
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
