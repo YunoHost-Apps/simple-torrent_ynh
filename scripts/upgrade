@@ -23,6 +23,7 @@ final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 port=$(ynh_app_setting_get --app=$app --key=port)
 peer_port=$(ynh_app_setting_get --app=$app --key=peer_port)
 architecture=$(ynh_detect_arch)
+public_path=$(ynh_app_setting_get --app=$app --key=public_path)
 
 #=================================================
 # CHECK VERSION
@@ -30,6 +31,20 @@ architecture=$(ynh_detect_arch)
 ynh_script_progression --message="Checking version..."
 
 upgrade_type=$(ynh_check_app_version_changed)
+
+#=================================================
+# ENSURE DOWNWARD COMPATIBILITY
+#=================================================
+ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
+
+# If public_path doesn't exist, create it
+if [ -z "$public_path" ]; then
+        public_path=/home/yunohost.app/$app
+        mkdir -p $public_path/{torrents,downloads}
+        mv -p /home/yunohost.$app/{torrents,downloads} $public_path/{torrents,downloads}
+        ynh_app_setting_set --app=$app --key=public_path --value=$public_path
+        # add move old folder to new folder...
+fi
 
 #=================================================
 # BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
@@ -123,9 +138,9 @@ ynh_add_systemd_config
 ynh_script_progression --message="Securing files and directories..."
 
 chown -R $app: $final_path
-chown -R $app: /home/yunohost.app/$app
+chown -R $app: $public_path
 chmod +x $final_path/$app
-chmod -R 755 /home/yunohost.app/$app/{torrents,downloads}
+chmod -R 755 $public_path/{torrents,downloads}
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
