@@ -14,6 +14,7 @@
 		setup_private=1
 		setup_public=1
 		upgrade=1
+		upgrade=1   from_commit=295026023fdb74f5bf210093f5b0622bae2982f3
 		backup_restore=1
 		multi_instance=1
 		port_already_use=1
@@ -22,6 +23,6 @@
 Email=
 Notification=none
 ;;; Upgrade options
-	; commit=CommitHash
-		name=Name and date of the commit.
+	; commit=295026023fdb74f5bf210093f5b0622bae2982f3
+		name= Upgrade to 1.2.12 (#10)
 		manifest_arg=domain=DOMAIN&path=PATH&admin=USER&language=fr&is_public=1&password=pass&port=4533&
