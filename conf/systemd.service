@@ -7,8 +7,8 @@ Type=simple
 User=__APP__
 Group=__APP__
 Environment=PORT=__PORT__
-WorkingDirectory=__FINAL_PATH__
-ExecStart=__FINAL_PATH__/__APP__ -c __FINAL_PATH__/config.json --host 127.0.0.1
+WorkingDirectory=__FINALPATH__
+ExecStart=__FINALPATH__/__APP__ -c __FINALPATH__/config.json --host 127.0.0.1
 Restart=always
 RestartSec=3
 
