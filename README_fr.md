@@ -27,7 +27,7 @@ Vous pouvez configurer Simple Torrent en modifiant le fichier `/var/www/simple-t
 ## Documentation
 
  * Documentation officielle : https://github.com/boypt/simple-torrent/wiki
- * Documentation YunoHost : https://yunohost.org/#/app_simple-torrent_fr
+ * Documentation YunoHost : https://yunohost.org/fr/app_simple-torrent
 
 ## Caractéristiques spécifiques YunoHost
 
