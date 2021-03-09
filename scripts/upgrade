@@ -18,7 +18,6 @@ app=$YNH_APP_INSTANCE_NAME
 
 domain=$(ynh_app_setting_get --app=$app --key=domain)
 path_url=$(ynh_app_setting_get --app=$app --key=path)
-is_public=$(ynh_app_setting_get --app=$app --key=is_public)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 port=$(ynh_app_setting_get --app=$app --key=port)
 peer_port=$(ynh_app_setting_get --app=$app --key=peer_port)
@@ -52,7 +51,7 @@ ynh_abort_if_errors
 #=================================================
 ynh_script_progression --message="Stopping a systemd service..." --weight=1
 
-ynh_systemd_action --service_name=$app --action="stop" --log_path="systemd"
+ynh_systemd_action --service_name=$app --action=stop --log_path=systemd
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -120,7 +119,7 @@ ynh_system_user_create --username=$app
 #=================================================
 ynh_script_progression --message="Configuring a systemd service..." --weight=2
 
-ynh_replace_string --match_string="__PORT__" --replace_string="$port" --target_file="../conf/systemd.service"
+#ynh_replace_string --match_string="__PORT__" --replace_string="$port" --target_file="../conf/systemd.service"
 
 ynh_add_systemd_config
 
