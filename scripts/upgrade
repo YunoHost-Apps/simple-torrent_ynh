@@ -61,7 +61,12 @@ ynh_systemd_action --service_name=$app --action="stop" --log_path="systemd"
 if [ "$upgrade_type" == "UPGRADE_APP" ]
 then
 	ynh_script_progression --message="Upgrading source files..." --weight=5
+	
+	tmpdir="$(mktemp -d)"
 
+	# Backup the config file in the temp dir
+	cp -a "$final_path/config.json" "$tmpdir/config.json"
+	
 	# Remove the app directory securely
 	ynh_secure_remove --file=$final_path
 
@@ -71,6 +76,12 @@ then
 		gzip --decompress $(ynh_detect_arch).gz
 		mv $(ynh_detect_arch) $app
 	popd
+
+	# Copy the admin saved settings from tmp directory to final path	
+	cp -a "$tmpdir/config.json" "$final_path/config.json" 
+
+	# Remove the tmp directory securely
+	ynh_secure_remove --file="$tmpdir"
 fi
 
 #=================================================
@@ -92,24 +103,23 @@ ynh_system_user_create --username=$app
 #=================================================
 # MODIFY A CONFIG FILE
 #=================================================
-ynh_script_progression --message="Modifying a config file..." --weight=1
+# ynh_script_progression --message="Modifying a config file..." --weight=1
 
-ynh_backup_if_checksum_is_different --file="$final_path/config.json"
+# ynh_backup_if_checksum_is_different --file="$final_path/config.json"
 
-cp ../conf/config.default.json "$final_path/config.json"
+# cp ../conf/config.default.json "$final_path/config.json"
 
-# Main config File
-ynh_replace_string --match_string="__APP__" --replace_string="$app" --target_file="$final_path/config.json"
-ynh_replace_string --match_string="__PEER_PORT__" --replace_string="$peer_port" --target_file="$final_path/config.json"
+# # Main config File
+# ynh_replace_string --match_string="__APP__" --replace_string="$app" --target_file="$final_path/config.json"
+# ynh_replace_string --match_string="__PEER_PORT__" --replace_string="$peer_port" --target_file="$final_path/config.json"
 
-ynh_store_file_checksum --file="$final_path/config.json"
+# ynh_store_file_checksum --file="$final_path/config.json"
 
 #=================================================
 # SETUP SYSTEMD
 #=================================================
 ynh_script_progression --message="Configuring a systemd service..." --weight=2
 
-ynh_replace_string --match_string="__APP__" --replace_string="$app" --target_file="../conf/systemd.service"
 ynh_replace_string --match_string="__FINALPATH__" --replace_string="$final_path" --target_file="../conf/systemd.service"
 ynh_replace_string --match_string="__PORT__" --replace_string="$port" --target_file="../conf/systemd.service"
 
