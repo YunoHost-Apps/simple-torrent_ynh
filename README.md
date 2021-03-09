@@ -27,7 +27,7 @@ You can also configure Simple Torrent by editing this file `/var/www/simple-torr
 ## Documentation
 
  * Official documentation: https://github.com/boypt/simple-torrent/wiki
- * YunoHost documentation: https://yunohost.org/#/app_simple-torrent
+ * YunoHost documentation: https://yunohost.org/en/app_simple-torrent
 
 ## YunoHost specific features
 
