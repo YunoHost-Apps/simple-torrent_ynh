@@ -35,11 +35,6 @@ upgrade_type=$(ynh_check_app_version_changed)
 #=================================================
 ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
 
-# If new path for app torrents doesn't exist, create it
-if [ -z "/home/yunohost.app/$app" ]; then
-	mkdir -p /home/yunohost.app/$app/{torrents,downloads}
-fi
-
 # Cleaning legacy permissions
 if ynh_legacy_permissions_exists; then
 	ynh_legacy_permissions_delete_all
@@ -107,6 +102,12 @@ ynh_script_progression --message="Upgrading NGINX web server configuration..." -
 
 # Create a dedicated NGINX config
 ynh_add_nginx_config
+
+#=================================================
+# CREATE DIRECTORIES
+#=================================================
+
+mkdir -p /home/yunohost.app/$app/{torrents,downloads}
 
 #=================================================
 # CREATE DEDICATED USER
