@@ -31,6 +31,18 @@ ynh_script_progression --message="Checking version..."
 upgrade_type=$(ynh_check_app_version_changed)
 
 #=================================================
+# ENSURE DOWNWARD COMPATIBILITY
+#=================================================
+ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
+
+# Cleaning legacy permissions
+if ynh_legacy_permissions_exists; then
+	ynh_legacy_permissions_delete_all
+
+	ynh_app_setting_delete --app=$app --key=is_public
+fi
+
+#=================================================
 # BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
 #=================================================
 ynh_script_progression --message="Backing up $app before upgrading (may take a while)..." --weight=4
@@ -92,6 +104,12 @@ ynh_script_progression --message="Upgrading NGINX web server configuration..." -
 ynh_add_nginx_config
 
 #=================================================
+# CREATE DIRECTORIES
+#=================================================
+
+mkdir -p /home/yunohost.app/$app/{torrents,downloads}
+
+#=================================================
 # CREATE DEDICATED USER
 #=================================================
 ynh_script_progression --message="Making sure dedicated system user exists..." --weight=1
@@ -116,9 +134,9 @@ ynh_add_systemd_config
 ynh_script_progression --message="Securing files and directories..."
 
 chown -R $app: $final_path
-chown -R $app: /home/yunohost.$app
+chown -R $app: /home/yunohost.app/$app
 chmod +x $final_path/$app
-chmod -R 755 /home/yunohost.$app/{torrents,downloads}
+chmod -R 755 /home/yunohost.app/$app/{torrents,downloads}
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
