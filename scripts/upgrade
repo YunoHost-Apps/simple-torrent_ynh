@@ -116,9 +116,9 @@ ynh_add_systemd_config
 ynh_script_progression --message="Securing files and directories..."
 
 chown -R $app: $final_path
-chown -R $app: /home/yunohost.$app
+chown -R $app: /home/yunohost.app/$app
 chmod +x $final_path/$app
-chmod -R 755 /home/yunohost.$app/{torrents,downloads}
+chmod -R 755 /home/yunohost.app/$app/{torrents,downloads}
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST

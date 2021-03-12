@@ -51,7 +51,7 @@ ynh_app_setting_set --app=$app --key=path   --value=$path_url
 #=================================================
 # FIND AND OPEN A PORT
 #=================================================
-ynh_script_progression --message="Configuring firewall..." --weight=0
+ynh_script_progression --message="Finding an available port..." --weight=0
 
 # Find an available port
 port=$(ynh_find_port --port=3000)
@@ -60,6 +60,7 @@ ynh_app_setting_set --app=$app --key=port --value=$port
 # Find incoming port peers connect to
 peer_port=$(ynh_find_port --port=50007)
 # Open this port
+ynh_script_progression --message="Configuring firewall..." --weight=1
 ynh_exec_warn_less yunohost firewall allow Both $peer_port
 ynh_app_setting_set --app=$app --key=peer_port --value=$peer_port
 
@@ -98,7 +99,7 @@ ynh_add_nginx_config
 # CREATE DIRECTORIES
 #=================================================
 
-mkdir -p /home/yunohost.${app}/{torrents,downloads}
+mkdir -p /home/yunohost.app/$app/{torrents,downloads}
 
 #=================================================
 # MODIFY A CONFIG FILE
@@ -131,9 +132,9 @@ ynh_script_progression --message="Securing files and directories..." --weight=1
 
 # Set permissions to app files
 chown -R $app: $final_path
-chown -R $app: /home/yunohost.$app
+chown -R $app: /home/yunohost.app
 chmod +x $final_path/$app
-chmod -R 755 /home/yunohost.$app/{torrents,downloads}
+chmod -R 755 /home/yunohost.app/$app/{torrents,downloads}
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
