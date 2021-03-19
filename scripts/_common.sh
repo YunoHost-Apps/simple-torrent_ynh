@@ -31,12 +31,6 @@ ynh_detect_arch() {
                 architecture="i386"                
         elif [ -n "$(uname -m | grep 64)" ]; then
                 architecture="x86_64"
-        elif [ -n "$(uname -m | grep armv7)" ]; then
-                architecture="armv7"
-        elif [ -n "$(uname -m | grep armv6)" ]; then
-                architecture="armv6"
-        elif [ -n "$(uname -m | grep armv5)" ]; then
-                architecture="armv5"
         else
                 architecture="unknown"
         fi

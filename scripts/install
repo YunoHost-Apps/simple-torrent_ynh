@@ -106,13 +106,15 @@ mkdir -p /home/yunohost.app/$app/{torrents,downloads}
 #=================================================
 ynh_script_progression --message="Modifying a config file..." --weight=1
 
-cp ../conf/config.default.json "$final_path/config.json"
+# cp ../conf/config.default.json "$final_path/config.json"
 
-# Main config File
-ynh_replace_string --match_string="__APP__" --replace_string="$app" --target_file="$final_path/config.json"
-ynh_replace_string --match_string="__PEER_PORT__" --replace_string="$peer_port" --target_file="$final_path/config.json"
+# # Main config File
+# ynh_replace_string --match_string="__APP__" --replace_string="$app" --target_file="$final_path/config.json"
+# ynh_replace_string --match_string="__PEER_PORT__" --replace_string="$peer_port" --target_file="$final_path/config.json"
 
-ynh_store_file_checksum --file="$final_path/config.json"
+# ynh_store_file_checksum --file="$final_path/config.json"
+
+ynh_add_config --template="../conf/config.default.json" --destination="$final_path/config.json"
 
 #=================================================
 # SETUP SYSTEMD

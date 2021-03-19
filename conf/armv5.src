@@ -1,7 +1,0 @@
-SOURCE_URL=https://github.com/boypt/simple-torrent/releases/download/1.2.15/cloud-torrent_linux_arm_armv5.gz
-SOURCE_SUM=a41067c4530e7ffc80f4f3378fb27bd9b51f3452bc3edda05378a67bbb0b3bb8
-SOURCE_SUM_PRG=sha256sum
-SOURCE_FORMAT=gz
-SOURCE_IN_SUBDIR=false
-SOURCE_FILENAME=
-SOURCE_EXTRACT=false
