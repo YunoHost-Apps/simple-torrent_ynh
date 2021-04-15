@@ -35,6 +35,12 @@ upgrade_type=$(ynh_check_app_version_changed)
 #=================================================
 ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
 
+# Check machine architecture (in particular, we don't support ARM 32bit machines)
+if [ $architecture == "unknown" ]
+then
+	ynh_die --message="Sorry, this app cannot be installed on a 32-bit ARM machine."
+fi
+
 # Cleaning legacy permissions
 if ynh_legacy_permissions_exists; then
 	ynh_legacy_permissions_delete_all

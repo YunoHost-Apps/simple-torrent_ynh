@@ -12,7 +12,7 @@ Si vous n'avez pas YunoHost, consultez [le guide](https://yunohost.org/#/install
 
 Simple Torrent est un client torrent distant auto-hébergé, écrit en Go (golang). Démarrez des torrents à distance, téléchargez des ensembles de fichiers sur le disque local du serveur, qui sont ensuite récupérables ou diffusables via HTTP.
 
-**Version incluse :** 1.2.17
+**Version incluse :** 1.2.18
 
 ## Captures d'écran
 
@@ -38,8 +38,12 @@ Vous pouvez configurer Simple Torrent en modifiant le fichier `/var/www/simple-t
 
 #### Architectures supportées
 
-* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/simple-torrent%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/simple-torrent/)
-* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/simple-torrent%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/simple-torrent/)
+* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/simple-torrent.svg)](https://ci-apps.yunohost.org/ci/apps/simple-torrent/)
+* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/simple-torrent.svg)](https://ci-apps-arm.yunohost.org/ci/apps/simple-torrent/)
+
+## Limitations
+
+* Désolé, cette application ne peut pas être installée sur une machine ARM 32 bits.
 
 ## Liens
 
