@@ -1,5 +1,5 @@
-SOURCE_URL=https://github.com/boypt/simple-torrent/releases/download/1.2.19/cloud-torrent_linux_arm64.gz
-SOURCE_SUM=
+SOURCE_URL=https://github.com/boypt/simple-torrent/releases/download/1.2.20/cloud-torrent_linux_arm64.gz
+SOURCE_SUM=5eb31c2a42ac3e7d22968c4ba71a237f44344f8282c988fa1dc714f14a7ea491
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=gz
 SOURCE_IN_SUBDIR=false
