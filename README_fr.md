@@ -6,13 +6,13 @@
 *[Read this readme in english.](./README.md)* 
 
 > *Ce package vous permet d'installer Simple Torrent rapidement et simplement sur un serveur YunoHost.  
-Si vous n'avez pas YunoHost, consultez [le guide](https://yunohost.org/#/install) pour apprendre comment l'installer.*
+Si vous n'avez pas YunoHost, consultez [le guide](https://yunohost.org/install) pour apprendre comment l'installer.*
 
 ## Vue d'ensemble
 
 Simple Torrent est un client torrent distant auto-hébergé, écrit en Go (golang). Démarrez des torrents à distance, téléchargez des ensembles de fichiers sur le disque local du serveur, qui sont ensuite récupérables ou diffusables via HTTP.
 
-**Version incluse :** 1.2.21
+**Version incluse :** 1.2.22
 
 ## Captures d'écran
 
