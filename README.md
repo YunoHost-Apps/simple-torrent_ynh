@@ -12,7 +12,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/inst
 
 Simple Torrent is a self-hosted remote torrent client, written in Go (golang). Started torrents remotely, download sets of files on the local disk of the server, which are then retrievable or streamable via HTTP.
 
-**Shipped version:** 1.2.22
+**Shipped version:** 1.2.23
 
 ## Screenshots
 
