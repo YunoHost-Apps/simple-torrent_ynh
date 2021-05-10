@@ -128,7 +128,7 @@ ynh_system_user_create --username=$app
 #=================================================
 ynh_script_progression --message="Configuring a systemd service..." --weight=2
 
-ynh_replace_string --match_string="__PORT__" --replace_string="$port" --target_file="../conf/systemd.service"
+#ynh_replace_string --match_string="__PORT__" --replace_string="$port" --target_file="../conf/systemd.service"
 
 ynh_add_systemd_config
 
@@ -139,10 +139,11 @@ ynh_add_systemd_config
 #=================================================
 ynh_script_progression --message="Securing files and directories..."
 
-chown -R $app: $final_path
-chown -R $app: /home/yunohost.app/$app
+chown -R $app:www-data $final_path
+chmod -R o-rwx $final_path
+chown -R $app:www-data /home/yunohost.app/$app
 chmod +x $final_path/$app
-chmod -R 755 /home/yunohost.app/$app/{torrents,downloads}
+chmod 755 /home/yunohost.app/$app/{torrents,downloads}
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST

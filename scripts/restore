@@ -83,10 +83,11 @@ ynh_system_user_create --username=$app
 ynh_script_progression --message="Restoring user rights..."
 
 # Set permissions to app files
-chown -R $app: $final_path
-chown -R $app: /home/yunohost.app/$app
+chown -R $app:www-data $final_path
+chmod -R o-rwx $final_path
+chown -R $app:www-data /home/yunohost.app/$app
 chmod +x $final_path/$app
-chmod -R 755 /home/yunohost.app/$app/{torrents,downloads}
+chmod 755 /home/yunohost.app/$app/{torrents,downloads}
 
 #=================================================
 # RESTORE SYSTEMD
