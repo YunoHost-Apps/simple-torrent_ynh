@@ -93,13 +93,10 @@ pushd "$final_path"
 	mv $(ynh_detect_arch) $app
 popd
 
-# Set permissions to app files
-chown -R $app:www-data $final_path
-chmod -R o-rwx $final_path
-
-chown -R $app:www-data /home/yunohost.app/$app
+chmod 750 "$final_path"
+chmod -R o-rwx "$final_path"
+chown -R $app:www-data "$final_path"
 chmod +x $final_path/$app
-chmod 755 /home/yunohost.app/$app/{torrents,downloads}
 
 #=================================================
 # NGINX CONFIGURATION
@@ -114,6 +111,9 @@ ynh_add_nginx_config
 #=================================================
 
 mkdir -p /home/yunohost.app/$app/{torrents,downloads}
+# Set permissions to app files
+chown -R $app:www-data /home/yunohost.app/$app
+chmod 755 /home/yunohost.app/$app/{torrents,downloads}
 
 #=================================================
 # MODIFY A CONFIG FILE
@@ -128,20 +128,6 @@ ynh_add_config --template="../conf/config.default.json" --destination="$final_pa
 ynh_script_progression --message="Configuring a systemd service..." --weight=1
 
 ynh_add_systemd_config
-
-#=================================================
-# GENERIC FINALIZATION
-#=================================================
-# SECURE FILES AND DIRECTORIES
-#=================================================
-ynh_script_progression --message="Securing files and directories..." --weight=1
-
-# Set permissions to app files
-chown -R $app:www-data $final_path
-chmod -R o-rwx $final_path
-chown -R $app:www-data /home/yunohost.app/$app
-chmod +x $final_path/$app
-chmod 755 /home/yunohost.app/$app/{torrents,downloads}
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
