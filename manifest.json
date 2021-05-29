@@ -8,6 +8,14 @@
     },
     "version": "1.2.23~ynh2",
     "url": "https://github.com/boypt/simple-torrent",
+    "upstream": {
+        "license": "AGPL-3.0-only",
+        "website": "https://example.com",
+        "demo": "https://demo.example.com",
+        "admindoc": "https://yunohost.org/packaging_apps",
+        "userdoc": "https://yunohost.org/apps",
+        "code": "https://github.com/boypt/simple-torrent"
+    },
     "license": "AGPL-3.0-only",
     "maintainer": {
         "name": "eric_G"
