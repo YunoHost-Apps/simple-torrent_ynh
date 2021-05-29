@@ -15,17 +15,25 @@ Client torrent distant auto-hébergé
 
 **Version incluse:** 1.2.23~ynh2
 
-**Démo :** https://demo.example.com
+
 
 ## Captures d'écran
 
 ![](./doc/screenshots/64239393-bdbb6480-cf32-11e9-9269-d8d10e7c0dc7.png)
+![](./doc/screenshots/.DS_Store)
+
+## Avertissements / informations importantes
+
+## Configuration
+
+La plupart des éléments peuvent être modifiés à la volée dans Web-UI dans la page de configuration.
+
+Vous pouvez configurer Simple Torrent en modifiant le fichier `/var/www/simple-torrent/config.json` en vous aidant de la [documentation](https://github.com/boypt/simple-torrent/wiki/Config-File).
 
 ## Documentations et ressources
 
-* Site officiel de l'app : https://example.com
-* Documentation officielle utilisateur : https://yunohost.org/apps
-* Documentation officielle de l'admin : https://yunohost.org/packaging_apps
+* Site officiel de l'app : https://github.com/boypt/simple-torrent
+* Documentation officielle de l'admin : https://github.com/boypt/simple-torrent/wiki
 * Dépôt de code officiel de l'app :  https://github.com/boypt/simple-torrent
 * Documentation YunoHost pour cette app : https://yunohost.org/app_simple-torrent
 * Signaler un bug: https://github.com/YunoHost-Apps/simple-torrent_ynh/issues

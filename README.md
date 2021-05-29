@@ -19,17 +19,25 @@ Self-hosted remote torrent client
 
 **Shipped version:** 1.2.23~ynh2
 
-**Demo:** https://demo.example.com
+
 
 ## Screenshots
 
 ![](./doc/screenshots/64239393-bdbb6480-cf32-11e9-9269-d8d10e7c0dc7.png)
+![](./doc/screenshots/.DS_Store)
+
+## Disclaimers / important information
+
+## Configuration
+
+Most of the items can be edited in Web-UI on the fly in the config board.
+
+You can also configure Simple Torrent by editing this file `/var/www/simple-torrent/config.json` using the [documentation](https://github.com/boypt/simple-torrent/wiki/Config-File).
 
 ## Documentation and resources
 
-* Official app website: https://example.com
-* Official user documentation: https://yunohost.org/apps
-* Official admin documentation: https://yunohost.org/packaging_apps
+* Official app website: https://github.com/boypt/simple-torrent
+* Official admin documentation: https://github.com/boypt/simple-torrent/wiki
 * Upstream app code repository:  https://github.com/boypt/simple-torrent
 * YunoHost documentation for this app: https://yunohost.org/app_simple-torrent
 * Report a bug: https://github.com/YunoHost-Apps/simple-torrent_ynh/issues
