@@ -8,6 +8,12 @@
     },
     "version": "1.2.23~ynh2",
     "url": "https://github.com/boypt/simple-torrent",
+    "upstream": {
+        "license": "AGPL-3.0-only",
+        "website": "https://github.com/boypt/simple-torrent",
+        "admindoc": "https://github.com/boypt/simple-torrent/wiki",
+        "code": "https://github.com/boypt/simple-torrent"
+    },
     "license": "AGPL-3.0-only",
     "maintainer": {
         "name": "eric_G"

@@ -72,34 +72,33 @@ ynh_script_progression --message="Stopping a systemd service..." --weight=1
 ynh_systemd_action --service_name=$app --action=stop --log_path=systemd
 
 #=================================================
+# CREATE DEDICATED USER
+#=================================================
+ynh_script_progression --message="Making sure dedicated system user exists..." --weight=1
+
+# Create a dedicated user (if not existing)
+ynh_system_user_create --username=$app --home_dir="$final_path"
+
+#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 
 if [ "$upgrade_type" == "UPGRADE_APP" ]
 then
 	ynh_script_progression --message="Upgrading source files..." --weight=5
-	
-	tmpdir="$(mktemp -d)"
-
-	# Backup the config file in the temp dir
-	cp -a "$final_path/config.json" "$tmpdir/config.json"
-	
-	# Remove the app directory securely
-	ynh_secure_remove --file=$final_path
 
 	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir=$final_path --source_id="$architecture"
+	ynh_setup_source --dest_dir=$final_path --source_id="$architecture" --keep="$final_path/config.json"
 	pushd "$final_path"
 		gzip --decompress $(ynh_detect_arch).gz
 		mv $(ynh_detect_arch) $app
 	popd
-
-	# Copy the admin saved settings from tmp directory to final path	
-	cp -a "$tmpdir/config.json" "$final_path/config.json" 
-
-	# Remove the tmp directory securely
-	ynh_secure_remove --file="$tmpdir"
 fi
+
+chmod 750 "$final_path"
+chmod -R o-rwx "$final_path"
+chown -R $app:www-data "$final_path"
+chmod +x $final_path/$app
 
 #=================================================
 # NGINX CONFIGURATION
@@ -115,13 +114,8 @@ ynh_add_nginx_config
 
 mkdir -p /home/yunohost.app/$app/{torrents,downloads}
 
-#=================================================
-# CREATE DEDICATED USER
-#=================================================
-ynh_script_progression --message="Making sure dedicated system user exists..." --weight=1
-
-# Create a dedicated user (if not existing)
-ynh_system_user_create --username=$app
+chown -R $app:www-data /home/yunohost.app/$app
+chmod 755 /home/yunohost.app/$app/{torrents,downloads}
 
 #=================================================
 # SETUP SYSTEMD
@@ -129,19 +123,6 @@ ynh_system_user_create --username=$app
 ynh_script_progression --message="Configuring a systemd service..." --weight=2
 
 ynh_add_systemd_config
-
-#=================================================
-# GENERIC FINALIZATION
-#=================================================
-# SECURE FILES AND DIRECTORIES
-#=================================================
-ynh_script_progression --message="Securing files and directories..."
-
-chown -R $app:www-data $final_path
-chmod -R o-rwx $final_path
-chown -R $app:www-data /home/yunohost.app/$app
-chmod +x $final_path/$app
-chmod 755 /home/yunohost.app/$app/{torrents,downloads}
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
