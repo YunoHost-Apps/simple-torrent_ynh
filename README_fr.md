@@ -30,6 +30,10 @@ La plupart des éléments peuvent être modifiés à la volée dans Web-UI dans 
 
 Vous pouvez configurer Simple Torrent en modifiant le fichier `/var/www/simple-torrent/config.json` en vous aidant de la [documentation](https://github.com/boypt/simple-torrent/wiki/Config-File).
 
+## Limitations
+
+- Cette application ne peut pas être installée sur une machine ARM 32 bits.
+
 ## Documentations et ressources
 
 * Site officiel de l'app : https://github.com/boypt/simple-torrent
