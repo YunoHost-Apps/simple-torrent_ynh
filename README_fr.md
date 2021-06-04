@@ -6,14 +6,14 @@
 *[Read this readme in english.](./README.md)*
 *[Lire ce readme en français.](./README_fr.md)*
 
-> *This package allows you to install Simple Torrent quickly and simply on a YunoHost server.
-If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/install) to learn how to install it.*
+> *Ce package vous permet d'installer Simple Torrent rapidement et simplement sur un serveur YunoHost.
+Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l'installer et en profiter.*
 
 ## Vue d'ensemble
 
 Client torrent distant auto-hébergé
 
-**Version incluse:** 1.2.23~ynh2
+**Version incluse :** 1.2.23~ynh3
 
 
 
@@ -36,11 +36,11 @@ Vous pouvez configurer Simple Torrent en modifiant le fichier `/var/www/simple-t
 
 ## Documentations et ressources
 
-* Site officiel de l'app : https://github.com/boypt/simple-torrent
-* Documentation officielle de l'admin : https://github.com/boypt/simple-torrent/wiki
-* Dépôt de code officiel de l'app :  https://github.com/boypt/simple-torrent
-* Documentation YunoHost pour cette app : https://yunohost.org/app_simple-torrent
-* Signaler un bug: https://github.com/YunoHost-Apps/simple-torrent_ynh/issues
+* Site officiel de l'app : https://github.com/boypt/simple-torrent
+* Documentation officielle de l'admin : https://github.com/boypt/simple-torrent/wiki
+* Dépôt de code officiel de l'app : https://github.com/boypt/simple-torrent
+* Documentation YunoHost pour cette app : https://yunohost.org/app_simple-torrent
+* Signaler un bug : https://github.com/YunoHost-Apps/simple-torrent_ynh/issues
 
 ## Informations pour les développeurs
 
@@ -49,8 +49,8 @@ Merci de faire vos pull request sur la [branche testing](https://github.com/Yuno
 Pour essayer la branche testing, procédez comme suit.
 ```
 sudo yunohost app install https://github.com/YunoHost-Apps/simple-torrent_ynh/tree/testing --debug
-or
+ou
 sudo yunohost app upgrade simple-torrent -u https://github.com/YunoHost-Apps/simple-torrent_ynh/tree/testing --debug
 ```
 
-**Plus d'infos sur le packaging d'applications:** https://yunohost.org/packaging_apps
+**Plus d'infos sur le packaging d'applications :** https://yunohost.org/packaging_apps

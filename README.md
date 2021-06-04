@@ -17,7 +17,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 Self-hosted remote torrent client
 
-**Shipped version:** 1.2.23~ynh2
+**Shipped version:** 1.2.23~ynh3
 
 
 
@@ -42,7 +42,7 @@ You can also configure Simple Torrent by editing this file `/var/www/simple-torr
 
 * Official app website: https://github.com/boypt/simple-torrent
 * Official admin documentation: https://github.com/boypt/simple-torrent/wiki
-* Upstream app code repository:  https://github.com/boypt/simple-torrent
+* Upstream app code repository: https://github.com/boypt/simple-torrent
 * YunoHost documentation for this app: https://yunohost.org/app_simple-torrent
 * Report a bug: https://github.com/YunoHost-Apps/simple-torrent_ynh/issues
 
