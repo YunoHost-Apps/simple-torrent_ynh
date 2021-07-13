@@ -13,7 +13,7 @@ Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour
 
 Client torrent distant auto-hébergé
 
-**Version incluse :** 1.2.23~ynh3
+**Version incluse :** 1.3.0~ynh1
 
 
 
@@ -28,7 +28,7 @@ Client torrent distant auto-hébergé
 
 La plupart des éléments peuvent être modifiés à la volée dans Web-UI dans la page de configuration.
 
-Vous pouvez configurer Simple Torrent en modifiant le fichier `/var/www/simple-torrent/config.json` en vous aidant de la [documentation](https://github.com/boypt/simple-torrent/wiki/Config-File).
+Vous pouvez configurer Simple Torrent en modifiant le fichier `/var/www/simple-torrent/config.yaml` en vous aidant de la [documentation](https://github.com/boypt/simple-torrent/wiki/Config-File).
 
 ## Limitations
 
