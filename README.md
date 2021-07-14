@@ -17,7 +17,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 Self-hosted remote torrent client
 
-**Shipped version:** 1.2.23~ynh3
+**Shipped version:** 1.3.0~ynh1
 
 
 
@@ -32,7 +32,7 @@ Self-hosted remote torrent client
 
 Most of the items can be edited in Web-UI on the fly in the config board.
 
-You can also configure Simple Torrent by editing this file `/var/www/simple-torrent/config.json` using the [documentation](https://github.com/boypt/simple-torrent/wiki/Config-File).
+You can also configure Simple Torrent by editing this file `/var/www/simple-torrent/config.yaml` using the [documentation](https://github.com/boypt/simple-torrent/wiki/Config-File).
 
 ## Limitations
 
