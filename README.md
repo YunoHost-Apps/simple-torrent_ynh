@@ -19,8 +19,6 @@ Self-hosted remote torrent client
 
 **Shipped version:** 1.3.1~ynh1
 
-
-
 ## Screenshots
 
 ![](./doc/screenshots/64239393-bdbb6480-cf32-11e9-9269-d8d10e7c0dc7.png)
