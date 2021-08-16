@@ -1,5 +1,5 @@
-SOURCE_URL=https://github.com/boypt/simple-torrent/releases/download/1.3.4/cloud-torrent_linux_386_static.gz
-SOURCE_SUM=ab92c751f918d944072093f5abe7ebbd1f8d1dd138e12019b1bffe9d8b645c65
+SOURCE_URL=https://github.com/boypt/simple-torrent/releases/download/1.3.6/cloud-torrent_linux_386_static.gz
+SOURCE_SUM=4ea80bccb38fae6b97c88b2e4c3bcb5173e38f546034b30fcec00c704a3a4b56
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=gz
 SOURCE_IN_SUBDIR=false

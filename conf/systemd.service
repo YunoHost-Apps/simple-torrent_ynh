@@ -8,7 +8,7 @@ User=__APP__
 Group=__APP__
 Environment=PORT=__PORT__
 WorkingDirectory=__FINALPATH__
-ExecStart=__FINALPATH__/__APP__ -c __FINALPATH__/config.yaml --host 127.0.0.1
+ExecStart=__FINALPATH__/__APP__ -c __FINALPATH__/config.yml --host 127.0.0.1
 Restart=always
 RestartSec=3
 
