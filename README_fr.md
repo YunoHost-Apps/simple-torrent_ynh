@@ -13,7 +13,7 @@ Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour
 
 Client torrent distant auto-hébergé
 
-**Version incluse :** 1.3.4~ynh1
+**Version incluse :** 1.3.6~ynh1
 
 
 
