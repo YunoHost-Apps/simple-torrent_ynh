@@ -6,7 +6,7 @@
         "en": "Self-hosted remote torrent client",
         "fr": "Client torrent distant auto-hébergé"
     },
-    "version": "1.3.6~ynh1",
+    "version": "1.3.6~ynh2",
     "url": "https://github.com/boypt/simple-torrent",
     "upstream": {
         "license": "AGPL-3.0-only",
@@ -19,7 +19,7 @@
         "name": "eric_G"
     },
     "requirements": {
-        "yunohost": ">= 4.2.4"
+        "yunohost": ">= 4.2.8"
     },
     "multi_instance": true,
     "services": [

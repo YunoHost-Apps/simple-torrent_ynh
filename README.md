@@ -17,7 +17,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 Self-hosted remote torrent client
 
-**Shipped version:** 1.3.6~ynh1
+**Shipped version:** 1.3.6~ynh2
 
 
 
