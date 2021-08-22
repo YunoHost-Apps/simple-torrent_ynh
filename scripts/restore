@@ -27,6 +27,7 @@ domain=$(ynh_app_setting_get --app=$app --key=domain)
 path_url=$(ynh_app_setting_get --app=$app --key=path)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 peer_port=$(ynh_app_setting_get --app=$app --key=peer_port)
+datadir=$(ynh_app_setting_get --app=$app --key=datadir)
 
 #=================================================
 # CHECK IF THE APP CAN BE RESTORED
@@ -52,7 +53,6 @@ ynh_restore_file --origin_path="/etc/nginx/conf.d/$domain.d/$app.conf"
 #=================================================
 ynh_script_progression --message="Configuring firewall..." --weight=3
 
-#ynh_exec_warn_less yunohost firewall allow --no-upnp TCP $port
 ynh_exec_warn_less yunohost firewall allow Both $peer_port
 
 #=================================================
@@ -80,10 +80,13 @@ chmod +x $final_path/$app
 #=================================================
 ynh_script_progression --message="Restoring $app data..." --weight=10
 
-ynh_restore_file --origin_path="/home/yunohost.app/$app" --not_mandatory
+ynh_restore_file --origin_path="$datadir" --not_mandatory
 
-chown -R $app:www-data /home/yunohost.app/$app
-chmod 755 /home/yunohost.app/$app/{torrents,downloads}
+mkdir -p $datadir/{torrents,downloads}
+
+chmod 755 $datadir/{torrents,downloads}
+chmod -R o-rwx $datadir
+chown -R $app:www-data $datadir
 
 #=================================================
 # RESTORE SYSTEMD

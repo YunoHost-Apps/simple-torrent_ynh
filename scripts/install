@@ -107,13 +107,19 @@ ynh_script_progression --message="Configuring NGINX web server..." --weight=3
 ynh_add_nginx_config
 
 #=================================================
-# CREATE DIRECTORIES
+# CREATE DATA DIRECTORY
 #=================================================
+ynh_script_progression --message="Creating a data directory..." --weight=1
 
-mkdir -p /home/yunohost.app/$app/{torrents,downloads}
+datadir=/home/yunohost.app/$app
+ynh_app_setting_set --app=$app --key=datadir --value=$datadir
+
+mkdir -p $datadir/{torrents,downloads}
+
 # Set permissions to app files
-chown -R $app:www-data /home/yunohost.app/$app
-chmod 755 /home/yunohost.app/$app/{torrents,downloads}
+chmod 755 $datadir/{torrents,downloads}
+chmod -R o-rwx $datadir
+chown -R $app:www-data $datadir
 
 #=================================================
 # MODIFY A CONFIG FILE
