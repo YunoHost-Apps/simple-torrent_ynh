@@ -63,13 +63,13 @@ echo "Handling asset at $asset_url"
 # Here we base the source file name upon a unique keyword in the assets url (admin vs. update)
 # Leave $src empty to ignore the asset
 case $asset_url in
-  *".gz"*)
+  *"cloud-torrent_linux_arm64_static.gz"*)
     src="arm64"
     ;;
-  *".gz"*)
+  *"cloud-torrent_linux_386_static.gz"*)
     src="i386"
     ;;
-  *".gz"*)
+  *"cloud-torrent_linux_amd64_static.gz"*)
     src="x86_64"
     ;;
 esac
