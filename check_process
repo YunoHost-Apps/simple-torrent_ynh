@@ -24,3 +24,4 @@ Notification=none
 	; commit=295026023fdb74f5bf210093f5b0622bae2982f3
 		name= Upgrade to 1.2.12 (#10)
 		manifest_arg=domain=DOMAIN&path=PATH&admin=USER&language=fr&is_public=1&password=pass&port=4533&
+		
