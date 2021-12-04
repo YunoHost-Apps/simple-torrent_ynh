@@ -23,7 +23,7 @@ ynh_abort_if_errors
 domain=$YNH_APP_ARG_DOMAIN
 path_url=$YNH_APP_ARG_PATH
 is_public=$YNH_APP_ARG_IS_PUBLIC
-architecture=$(ynh_detect_arch)
+architecture=$YNH_ARCH
 
 app=$YNH_APP_INSTANCE_NAME
 
@@ -87,11 +87,6 @@ ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 
 # Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir=$final_path --source_id="$architecture"
-
-pushd "$final_path"
-	gzip --decompress $(ynh_detect_arch).gz
-	mv $(ynh_detect_arch) $app
-popd
 
 chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
