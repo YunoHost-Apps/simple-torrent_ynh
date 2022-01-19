@@ -23,6 +23,11 @@ port=$(ynh_app_setting_get --app=$app --key=port)
 peer_port=$(ynh_app_setting_get --app=$app --key=peer_port)
 architecture=$(ynh_detect_arch)
 
+download_directory=$(ynh_app_setting_get --app=$app --key=download_directory)
+watch_directory=$(ynh_app_setting_get --app=$app --key=watch_directory)
+disable_ip_v6=$(ynh_app_setting_get --app=$app --key=disable_ip_v6)
+disable_utp=$(ynh_app_setting_get --app=$app --key=disable_utp)
+
 #=================================================
 # CHECK VERSION
 #=================================================
@@ -52,6 +57,26 @@ ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
 if [ $architecture == "unknown" ]
 then
 	ynh_die --message="Sorry, this app cannot be installed on a 32-bit ARM machine."
+fi
+
+if [ -z "$download_directory" ]; then
+	download_directory="/home/yunohost.app/$app/downloads"
+	ynh_app_setting_set --app=$app --key=download_directory --value=$download_directory
+fi
+
+if [ -z "$watch_directory" ]; then
+	watch_directory="/home/yunohost.app/$app/torrents"
+	ynh_app_setting_set --app=$app --key=watch_directory --value=$watch_directory
+fi
+
+if [ -z "$disable_ip_v6" ]; then
+	disable_ip_v6="false"
+	ynh_app_setting_set --app=$app --key=disable_ip_v6 --value=$disable_ip_v6
+fi
+
+if [ -z "$disable_utp" ]; then
+	disable_utp="false"
+	ynh_app_setting_set --app=$app --key=disable_utp --value=$disable_utp
 fi
 
 # Cleaning legacy permissions
@@ -87,7 +112,7 @@ then
 	ynh_script_progression --message="Upgrading source files..." --weight=5
 
 	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir=$final_path --source_id="$architecture" --keep="$final_path/config.yml"
+	ynh_setup_source --dest_dir=$final_path --source_id="$architecture" #--keep="$final_path/config.yml"
 
 	pushd "$final_path"
 		gzip --decompress $(ynh_detect_arch).gz
@@ -111,9 +136,9 @@ ynh_add_nginx_config
 #=================================================
 # MODIFY A CONFIG FILE
 #=================================================
-# ynh_script_progression --message="Modifying a config file..." --weight=1
+ynh_script_progression --message="Modifying a config file..." --weight=1
 
-# ynh_add_config --template="../conf/config.default.yml" --destination="$final_path/config.yml"
+ynh_add_config --template="../conf/config.default.yml" --destination="$final_path/config.yml"
 
 #=================================================
 # CREATE DIRECTORIES

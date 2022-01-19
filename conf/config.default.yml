@@ -19,20 +19,20 @@ ObfsRequirePreferred: false
 DisableTrackers: false
 # DisableTrackers Don't announce to trackers. This only leaves DHT to discover peers.
 
-DisableIPv6: false
+DisableIPv6: __DISABLE_IP_V6__
 # DisableIPv6 Don't connect to IPv6 peers.
 
-DisableUTP: false
+DisableUTP: __DISABLE_UTP__
 # Disable UTP in the torrent protocol.
 # In recent versions, the UTP process cause quite high CPU usage. Set to true can ease the situation.
 
 NoDefaultPortForwarding: true
 # Don't broadcast the UPNP request for gateway port forwarding, which is unnecessary in machines that has public IP (of which this program is mean for?)
 
-DownloadDirectory: /home/yunohost.app/__APP__/downloads
+DownloadDirectory: __DOWNLOAD_DIRECTORY__
 # DisableEncryption A switch disables [BitTorrent protocol encryption](https://en.wikipedia.org/wiki/BitTorrent_protocol_encryption)
 
-WatchDirectory: /home/yunohost.app/__APP__/torrents
+WatchDirectory: __WATCH_DIRECTORY__
 # DownloadDirectory The directory where downloaded file saves.
 
 EnableUpload: true

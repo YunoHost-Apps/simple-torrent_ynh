@@ -1,0 +1,44 @@
+version = "1.0"
+
+[main]
+name = "Simple Torrent configuration"
+services = ["__APP__"]
+
+    [main.config]
+    name = "Configuration Options"
+
+        [main.config.download_directory]
+        ask = "Set download directory"
+        type = "string"
+        default = "/home/yunohost.app/__APP__/downloads"
+        help = "The directory where downloaded file saves."
+        bind = "DownloadDirectory:__FINALPATH__/config.yml"
+
+        [main.config.watch_directory]
+        ask = "Set watch directory"
+        type = "string"
+        default = "/home/yunohost.app/__APP__/torrents"
+        help = "The directory where downloaded file saves."
+        bind = "WatchDirectory:__FINALPATH__/config.yml"
+
+        [main.config.disable_ip_v6]
+        ask = "Disable IPv6"
+        type = "boolean"
+        yes = "true"
+        no = "false"
+        help = "Don't connect to IPv6 peers."
+        bind = "DisableIPv6:__FINALPATH__/config.yml"
+
+        [main.config.disable_utp]
+        ask = "Disable UTP"
+        type = "boolean"
+        yes = "true"
+        no = "false"
+        help = "Disable UTP in the torrent protocol. In recent versions, the UTP process cause quite high CPU usage. Set to true can ease the situation."
+        bind = "DisableUTP:__FINALPATH__/config.yml"
+
+
+
+
+
+
