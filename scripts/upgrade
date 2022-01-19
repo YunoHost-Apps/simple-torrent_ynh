@@ -113,12 +113,12 @@ then
 
 	# Download, check integrity, uncompress and patch the source from app.src
 	ynh_setup_source --dest_dir=$final_path --source_id="$architecture" #--keep="$final_path/config.yml"
-fi
 
-pushd "$final_path"
-	gzip --decompress $(ynh_detect_arch).gz
-	mv $(ynh_detect_arch) $app
-popd
+	pushd "$final_path"
+		gzip --decompress $(ynh_detect_arch).gz
+		mv $(ynh_detect_arch) $app
+	popd
+fi
 
 chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
