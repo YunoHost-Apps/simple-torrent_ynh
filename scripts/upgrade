@@ -21,7 +21,7 @@ path_url=$(ynh_app_setting_get --app=$app --key=path)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 port=$(ynh_app_setting_get --app=$app --key=port)
 peer_port=$(ynh_app_setting_get --app=$app --key=peer_port)
-architecture=$YNH_ARCH
+architecture=$(ynh_detect_arch)
 
 download_directory=$(ynh_app_setting_get --app=$app --key=download_directory)
 watch_directory=$(ynh_app_setting_get --app=$app --key=watch_directory)
