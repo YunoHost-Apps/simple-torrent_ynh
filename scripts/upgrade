@@ -112,7 +112,7 @@ then
 	ynh_script_progression --message="Upgrading source files..." --weight=5
 
 	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir=$final_path --source_id="$architecture" --keep="$final_path/config.yml"
+	ynh_setup_source --dest_dir=$final_path --source_id="$architecture" #--keep="$final_path/config.yml"
 fi
 
 chmod 750 "$final_path"
@@ -131,9 +131,9 @@ ynh_add_nginx_config
 #=================================================
 # MODIFY A CONFIG FILE
 #=================================================
-# ynh_script_progression --message="Modifying a config file..." --weight=1
+ynh_script_progression --message="Modifying a config file..." --weight=1
 
-# ynh_add_config --template="../conf/config.default.yml" --destination="$final_path/config.yml"
+ynh_add_config --template="../conf/config.default.yml" --destination="$final_path/config.yml"
 
 #=================================================
 # CREATE DIRECTORIES
