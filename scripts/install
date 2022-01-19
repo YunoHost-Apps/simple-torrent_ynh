@@ -27,8 +27,6 @@ architecture=$(ynh_detect_arch)
 
 app=$YNH_APP_INSTANCE_NAME
 
-download_directory="/home/yunohost.app/$app/downloads"
-watch_directory="/home/yunohost.app/$app/torrents"
 disable_ip_v6="false"
 disable_utp="false"
 
@@ -56,8 +54,6 @@ ynh_script_progression --message="Storing installation settings..." --weight=2
 
 ynh_app_setting_set --app=$app --key=domain --value=$domain
 ynh_app_setting_set --app=$app --key=path --value=$path_url
-ynh_app_setting_set --app=$app --key=download_directory --value=$download_directory
-ynh_app_setting_set --app=$app --key=watch_directory --value=$watch_directory
 ynh_app_setting_set --app=$app --key=disable_ip_v6 --value=$disable_ip_v6
 ynh_app_setting_set --app=$app --key=disable_utp --value=$disable_utp
 
@@ -124,6 +120,11 @@ datadir=/home/yunohost.app/$app
 ynh_app_setting_set --app=$app --key=datadir --value=$datadir
 
 mkdir -p $datadir/{torrents,downloads}
+
+download_directory=$datadir/downloads
+watch_directory=$datadir/torrents
+ynh_app_setting_set --app=$app --key=download_directory --value=$download_directory
+ynh_app_setting_set --app=$app --key=watch_directory --value=$watch_directory
 
 # Set permissions to app files
 chmod 755 $datadir/{torrents,downloads}
