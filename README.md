@@ -30,7 +30,7 @@ SimpleTorrent is a a self-hosted remote torrent client, written in Go (golang). 
 - Magnet RSS subscribing supported
 
 
-**Shipped version:** 1.3.9~ynh3
+**Shipped version:** 1.3.9~ynh4 *(:warning: This is the `testing` branch. The [`master` branch](https://github.com/YunoHost-Apps/simple-torrent_ynh/tree/master) used in the catalog is currently on version 1.3.9\~ynh3.)*
 
 
 ## Screenshots
