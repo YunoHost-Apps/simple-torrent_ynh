@@ -10,79 +10,26 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# MANAGE SCRIPT FAILURE
-#=================================================
-
-# Exit if an error occurs during the execution of the script
-#REMOVEME? ynh_abort_if_errors
-
-#=================================================
-# RETRIEVE ARGUMENTS FROM THE MANIFEST
-#=================================================
-
-#REMOVEME? domain=$YNH_APP_ARG_DOMAIN
-#REMOVEME? path=$YNH_APP_ARG_PATH
-#REMOVEME? is_public=$YNH_APP_ARG_IS_PUBLIC
-
-#REMOVEME? app=$YNH_APP_INSTANCE_NAME
-
-#=================================================
-# CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
-#=================================================
-#REMOVEME? ynh_script_progression --message="Validating installation parameters..." --weight=1
-
-# Stop if architecture is 32-bit ARM
-case $YNH_ARCH in
-    arm|armhf) ynh_die --message="Sorry, your architecture $YNH_ARCH is not supported by $app. Aborting.";;
-    *)         ;;
-esac
-
-#REMOVEME? install_dir=/var/www/$app
-#REMOVEME? test ! -e "$install_dir" || ynh_die --message="This path already contains a folder"
-
-# Register (book) web path
-#REMOVEME? ynh_webpath_register --app=$app --domain=$domain --path=$path
-
-#=================================================
-# STORE SETTINGS FROM MANIFEST
-#=================================================
-#REMOVEME? ynh_script_progression --message="Storing installation settings..." --weight=2
-
-#REMOVEME? ynh_app_setting_set --app=$app --key=domain --value=$domain
-#REMOVEME? ynh_app_setting_set --app=$app --key=path --value=$path
-
-#=================================================
 # STANDARD MODIFICATIONS
 #=================================================
 # FIND AND OPEN A PORT
 #=================================================
-#REMOVEME? ynh_script_progression --message="Finding an available port..." --weight=0
+ynh_script_progression --message="Finding an available port..." --weight=0
 
 # Find an available port
-#REMOVEME? port=$(ynh_find_port --port=3000)
-#REMOVEME? ynh_app_setting_set --app=$app --key=port --value=$port
+port=$(ynh_find_port --port=3000)
+ynh_app_setting_set --app=$app --key=port --value=$port
 
-# Find incoming port peers connect to
-#REMOVEME? peer_port=$(ynh_find_port --port=50007)
+peer_port=$(ynh_find_port --port=50007)
 # Open this port
 ynh_script_progression --message="Configuring firewall..." --weight=1
 ynh_exec_warn_less yunohost firewall allow Both $peer_port
-#REMOVEME? ynh_app_setting_set --app=$app --key=peer_port --value=$peer_port
-
-#=================================================
-# CREATE DEDICATED USER
-#=================================================
-#REMOVEME? ynh_script_progression --message="Configuring system user..." --weight=1
-
-# Create a system user
-#REMOVEME? ynh_system_user_create --username=$app --home_dir=$install_dir
+ynh_app_setting_set --app=$app --key=peer_port --value=$peer_port
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression --message="Setting up source files..." --weight=4
-
-#REMOVEME? ynh_app_setting_set --app=$app --key=install_dir --value=$install_dir
 
 # Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir=$install_dir --source_id=$YNH_ARCH
@@ -109,9 +56,6 @@ ynh_add_nginx_config
 # CREATE DATA DIRECTORY
 #=================================================
 ynh_script_progression --message="Creating a data directory..." --weight=1
-
-#REMOVEME? data_dir=/home/yunohost.app/$app
-#REMOVEME? ynh_app_setting_set --app=$app --key=data_dir --value=$data_dir
 
 mkdir -p $data_dir/{torrents,downloads}
 
@@ -148,17 +92,6 @@ ynh_script_progression --message="Starting a systemd service..." --weight=2
 
 # Start a systemd service
 ynh_systemd_action --service_name=$app --action=start --log_path=systemd
-
-#=================================================
-# SETUP SSOWAT
-#=================================================
-#REMOVEME? ynh_script_progression --message="Configuring permissions..." --weight=1
-
-# Make app public if necessary or protect it
-#REMOVEME? if [ $is_public -eq 1 ]
-then
-#REMOVEME? 	ynh_permission_update --permission="main" --add="visitors"
-fi
 
 #=================================================
 # RELOAD NGINX
