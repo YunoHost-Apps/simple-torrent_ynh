@@ -7,8 +7,8 @@ Type=simple
 User=__APP__
 Group=__APP__
 Environment=PORT=__PORT__
-WorkingDirectory=__FINALPATH__
-ExecStart=__FINALPATH__/__APP__ -c __FINALPATH__/config.yml --host 127.0.0.1
+WorkingDirectory=__INSTALL_DIR__
+ExecStart=__INSTALL_DIR__/__APP__ -c __INSTALL_DIR__/config.yml --host 127.0.0.1
 Restart=always
 RestartSec=3
 
