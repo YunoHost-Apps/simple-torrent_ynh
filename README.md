@@ -34,7 +34,6 @@ SimpleTorrent is a a self-hosted remote torrent client, written in Go (golang). 
 
 ## Screenshots
 
-![Screenshot of Simple Torrent](./doc/screenshots/.DS_Store)
 ![Screenshot of Simple Torrent](./doc/screenshots/screenshot.png)
 
 ## Disclaimers / important information
