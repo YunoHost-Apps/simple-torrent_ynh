@@ -5,15 +5,15 @@ It shall NOT be edited by hand.
 
 # Simple Torrent pour YunoHost
 
-[![Niveau d'intégration](https://dash.yunohost.org/integration/simple-torrent.svg)](https://dash.yunohost.org/appci/app/simple-torrent) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/simple-torrent.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/simple-torrent.maintain.svg)  
+[![Niveau d’intégration](https://dash.yunohost.org/integration/simple-torrent.svg)](https://dash.yunohost.org/appci/app/simple-torrent) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/simple-torrent.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/simple-torrent.maintain.svg)
 [![Installer Simple Torrent avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=simple-torrent)
 
 *[Read this readme in english.](./README.md)*
 
-> *Ce package vous permet d'installer Simple Torrent rapidement et simplement sur un serveur YunoHost.
-Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l'installer et en profiter.*
+> *Ce package vous permet d’installer Simple Torrent rapidement et simplement sur un serveur YunoHost.
+Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l’installer et en profiter.*
 
-## Vue d'ensemble
+## Vue d’ensemble
 
 SimpleTorrent is a a self-hosted remote torrent client, written in Go (golang). Started torrents remotely, download sets of files on the local disk of the server, which are then retrievable or streamable via HTTP.
 
@@ -30,12 +30,12 @@ SimpleTorrent is a a self-hosted remote torrent client, written in Go (golang). 
 - Magnet RSS subscribing supported
 
 
-**Version incluse :** 1.3.9~ynh4
+**Version incluse :** 1.3.9~ynh5
 
-## Captures d'écran
+## Captures d’écran
 
-![Capture d'écran de Simple Torrent](./doc/screenshots/64239393-bdbb6480-cf32-11e9-9269-d8d10e7c0dc7.png)
-![Capture d'écran de Simple Torrent](./doc/screenshots/.DS_Store)
+![Capture d’écran de Simple Torrent](./doc/screenshots/.DS_Store)
+![Capture d’écran de Simple Torrent](./doc/screenshots/screenshot.png)
 
 ## Avertissements / informations importantes
 
@@ -51,9 +51,8 @@ Vous pouvez configurer Simple Torrent en modifiant le fichier `/var/www/simple-t
 
 ## Documentations et ressources
 
-* Site officiel de l'app : <https://github.com/boypt/simple-torrent>
-* Documentation officielle de l'admin : <https://github.com/boypt/simple-torrent/wiki>
-* Dépôt de code officiel de l'app : <https://github.com/boypt/simple-torrent>
+* Documentation officielle de l’admin : <https://github.com/boypt/simple-torrent/wiki>
+* Dépôt de code officiel de l’app : <https://github.com/boypt/simple-torrent>
 * Documentation YunoHost pour cette app : <https://yunohost.org/app_simple-torrent>
 * Signaler un bug : <https://github.com/YunoHost-Apps/simple-torrent_ynh/issues>
 
@@ -69,4 +68,4 @@ ou
 sudo yunohost app upgrade simple-torrent -u https://github.com/YunoHost-Apps/simple-torrent_ynh/tree/testing --debug
 ```
 
-**Plus d'infos sur le packaging d'applications :** <https://yunohost.org/packaging_apps>
+**Plus d’infos sur le packaging d’applications :** <https://yunohost.org/packaging_apps>
