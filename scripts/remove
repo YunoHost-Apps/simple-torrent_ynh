@@ -10,8 +10,10 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# REMOVE SERVICE INTEGRATION IN YUNOHOST
+# REMOVE SYSTEMD SERVICE 
 #=================================================
+
+ynh_script_progression --message="Removing system configurations related to $app..." --weight=5
 
 # Remove the service from the list of services known by YunoHost (added from `yunohost service add`)
 if ynh_exec_warn_less yunohost service status $app >/dev/null
@@ -20,42 +22,11 @@ then
 	yunohost service remove $app
 fi
 
-#=================================================
-# STOP AND REMOVE SERVICE
-#=================================================
-ynh_script_progression --message="Stopping and removing the systemd service..." --weight=1
-
 # Remove the dedicated systemd config
 ynh_remove_systemd_config
 
-#=================================================
-# REMOVE DATA DIR
-#=================================================
-
-# Remove the data directory if --purge option is used
-if [ "${YNH_APP_PURGE:-0}" -eq 1 ]
-then
-	ynh_script_progression --message="Removing app data directory..." --weight=1
-#REMOVEME? 	ynh_secure_remove --file="$data_dir"
-fi
-
-#=================================================
-# REMOVE NGINX CONFIGURATION
-#=================================================
-ynh_script_progression --message="Removing NGINX web server configuration..." --weight=5
-
 # Remove the dedicated NGINX config
 ynh_remove_nginx_config
-
-#=================================================
-# CLOSE A PORT
-#=================================================
-
-if yunohost firewall list | grep -q "\- $peer_port$"
-then
-	ynh_script_progression --message="Closing port $peer_port..." --weight=1
-	ynh_exec_warn_less yunohost firewall disallow Both $peer_port
-fi
 
 #=================================================
 # END OF SCRIPT

@@ -10,14 +10,6 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# LOAD SETTINGS
-#=================================================
-ynh_script_progression --message="Loading installation settings..." --weight=2
-
-port=$(ynh_app_setting_get --app=$app --key=port)
-peer_port=$(ynh_app_setting_get --app=$app --key=peer_port)
-
-#=================================================
 # CHECK VERSION
 #=================================================
 
@@ -49,18 +41,20 @@ then
 	popd
 fi
 
-chmod 750 "$install_dir"
-chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
 chmod +x $install_dir/$app
 
 #=================================================
-# NGINX CONFIGURATION
+# REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
-ynh_script_progression --message="Upgrading NGINX web server configuration..." --weight=2
+ynh_script_progression --message="Upgrading system configurations related to $app..." --weight=1
 
 # Create a dedicated NGINX config
 ynh_add_nginx_config
+
+ynh_add_systemd_config
+
+yunohost service add $app --description="Self-hosted remote torrent client" --needs_exposed_ports="$peer_port" --log="/var/log/$app/$app.log"
 
 #=================================================
 # MODIFY A CONFIG FILE
@@ -79,32 +73,11 @@ chown -R $app:www-data /home/yunohost.app/$app
 chmod 755 /home/yunohost.app/$app/{torrents,downloads}
 
 #=================================================
-# SETUP SYSTEMD
-#=================================================
-ynh_script_progression --message="Configuring a systemd service..." --weight=2
-
-ynh_add_systemd_config
-
-#=================================================
-# INTEGRATE SERVICE IN YUNOHOST
-#=================================================
-ynh_script_progression --message="Integrating service in YunoHost..."
-
-yunohost service add $app --description="Self-hosted remote torrent client" --needs_exposed_ports="$peer_port" --log="/var/log/$app/$app.log"
-
-#=================================================
 # START SYSTEMD SERVICE
 #=================================================
 ynh_script_progression --message="Starting a systemd service..." --weight=1
 
 ynh_systemd_action --service_name=$app --action=start --log_path=systemd
-
-#=================================================
-# RELOAD NGINX
-#=================================================
-ynh_script_progression --message="Reloading NGINX web server..." --weight=1
-
-ynh_systemd_action --service_name=nginx --action=reload
 
 #=================================================
 # END OF SCRIPT

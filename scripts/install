@@ -10,23 +10,6 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# STANDARD MODIFICATIONS
-#=================================================
-# FIND AND OPEN A PORT
-#=================================================
-ynh_script_progression --message="Finding an available port..." --weight=0
-
-# Find an available port
-port=$(ynh_find_port --port=3000)
-ynh_app_setting_set --app=$app --key=port --value=$port
-
-peer_port=$(ynh_find_port --port=50007)
-# Open this port
-ynh_script_progression --message="Configuring firewall..." --weight=1
-ynh_exec_warn_less yunohost firewall allow Both $peer_port
-ynh_app_setting_set --app=$app --key=peer_port --value=$peer_port
-
-#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression --message="Setting up source files..." --weight=4
@@ -39,18 +22,20 @@ pushd "$install_dir"
 	mv $YNH_ARCH $app
 popd
 
-chmod 750 "$install_dir"
-chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
 chmod +x $install_dir/$app
 
 #=================================================
-# NGINX CONFIGURATION
+# SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Configuring NGINX web server..." --weight=3
+ynh_script_progression --message="Adding system configurations related to $app ..." --weight=1
 
 # Create a dedicated NGINX config
 ynh_add_nginx_config
+
+ynh_add_systemd_config
+
+yunohost service add $app --description="Self-hosted remote torrent client" --needs_exposed_ports="$port_peer" --log="/var/log/$app/$app.log"
 
 #=================================================
 # CREATE DATA DIRECTORY
@@ -71,19 +56,8 @@ ynh_script_progression --message="Modifying a config file..." --weight=1
 
 ynh_add_config --template="../conf/config.default.yml" --destination="$install_dir/config.yml"
 
-#=================================================
-# SETUP SYSTEMD
-#=================================================
-ynh_script_progression --message="Configuring a systemd service..." --weight=1
-
-ynh_add_systemd_config
-
-#=================================================
-# INTEGRATE SERVICE IN YUNOHOST
-#=================================================
-ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
-
-yunohost service add $app --description="Self-hosted remote torrent client" --needs_exposed_ports="$peer_port" --log="/var/log/$app/$app.log"
+chmod 400 "$install_dir/config.yml"
+chown $app:$app "$install_dir/config.yml"
 
 #=================================================
 # START SYSTEMD SERVICE
@@ -92,13 +66,6 @@ ynh_script_progression --message="Starting a systemd service..." --weight=2
 
 # Start a systemd service
 ynh_systemd_action --service_name=$app --action=start --log_path=systemd
-
-#=================================================
-# RELOAD NGINX
-#=================================================
-ynh_script_progression --message="Reloading NGINX web server..." --weight=2
-
-ynh_systemd_action --service_name=nginx --action=reload
 
 #=================================================
 # END OF SCRIPT
