@@ -5,7 +5,8 @@ It shall NOT be edited by hand.
 
 # Simple Torrent for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/simple-torrent.svg)](https://dash.yunohost.org/appci/app/simple-torrent) ![Working status](https://ci-apps.yunohost.org/ci/badges/simple-torrent.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/simple-torrent.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/simple-torrent.svg)](https://dash.yunohost.org/appci/app/simple-torrent) ![Working status](https://ci-apps.yunohost.org/ci/badges/simple-torrent.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/simple-torrent.maintain.svg)
+
 [![Install Simple Torrent with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=simple-torrent)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -36,18 +37,6 @@ SimpleTorrent is a a self-hosted remote torrent client, written in Go (golang). 
 
 ![Screenshot of Simple Torrent](./doc/screenshots/64239393-bdbb6480-cf32-11e9-9269-d8d10e7c0dc7.png)
 ![Screenshot of Simple Torrent](./doc/screenshots/.DS_Store)
-
-## Disclaimers / important information
-
-## Configuration
-
-Most of the items can be edited in Web-UI on the fly in the config board.
-
-You can also configure Simple Torrent by editing this file `/var/www/simple-torrent/config.yml` using the [documentation](https://github.com/boypt/simple-torrent/wiki/Config-File).
-
-## Limitations
-
-- This app cannot be installed on a 32-bit ARM machine.
 
 ## Documentation and resources
 
