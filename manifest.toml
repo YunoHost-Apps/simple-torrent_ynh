@@ -1,0 +1,54 @@
+packaging_format = 2
+
+id = "simple-torrent"
+name = "Simple Torrent"
+description.en = "Self-hosted remote torrent client"
+description.fr = "Client torrent distant auto-hébergé"
+
+version = "1.3.9~ynh6"
+
+maintainers = ["eric_G"]
+
+[upstream]
+license = "AGPL-3.0-only"
+admindoc = "https://github.com/boypt/simple-torrent/wiki"
+code = "https://github.com/boypt/simple-torrent"
+
+[integration]
+yunohost = ">= 11.1.7"
+architectures = ["amd64","i386", "arm64"]
+multi_instance = true
+ldap = false
+sso = false
+disk = "50M"
+ram.build = "50M"
+ram.runtime = "50M"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.path]
+    type = "path"
+    default = "/simple-torrent"
+
+    [install.init_main_permission]
+    help.en = "If enabled, Simple Torrent will be accessible by people who do not have an account. This can be changed later via the webadmin."
+    help.fr = "Si cette case est cochée, Simple Torrent sera accessible aux personnes n’ayant pas de compte. Vous pourrez changer ceci plus tard via la webadmin."
+    type = "group"
+    default = "visitors"
+
+[resources]
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.data_dir]
+
+    [resources.ports]
+    main.default = 3000
+    peer.default = 50007
+    peer.exposed = "Both"
+
+    [resources.permissions]
+    main.url = "/"
