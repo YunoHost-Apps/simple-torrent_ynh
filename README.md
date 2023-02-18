@@ -5,7 +5,7 @@ It shall NOT be edited by hand.
 
 # Simple Torrent for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/simple-torrent.svg)](https://dash.yunohost.org/appci/app/simple-torrent) ![Working status](https://ci-apps.yunohost.org/ci/badges/simple-torrent.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/simple-torrent.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/simple-torrent.svg)](https://dash.yunohost.org/appci/app/simple-torrent) ![Working status](https://ci-apps.yunohost.org/ci/badges/simple-torrent.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/simple-torrent.maintain.svg)
 [![Install Simple Torrent with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=simple-torrent)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -30,12 +30,11 @@ SimpleTorrent is a a self-hosted remote torrent client, written in Go (golang). 
 - Magnet RSS subscribing supported
 
 
-**Shipped version:** 1.3.9~ynh4
+**Shipped version:** 1.3.9~ynh5
 
 ## Screenshots
 
-![Screenshot of Simple Torrent](./doc/screenshots/64239393-bdbb6480-cf32-11e9-9269-d8d10e7c0dc7.png)
-![Screenshot of Simple Torrent](./doc/screenshots/.DS_Store)
+![Screenshot of Simple Torrent](./doc/screenshots/screenshot.png)
 
 ## Disclaimers / important information
 
@@ -51,7 +50,6 @@ You can also configure Simple Torrent by editing this file `/var/www/simple-torr
 
 ## Documentation and resources
 
-* Official app website: <https://github.com/boypt/simple-torrent>
 * Official admin documentation: <https://github.com/boypt/simple-torrent/wiki>
 * Upstream app code repository: <https://github.com/boypt/simple-torrent>
 * YunoHost documentation for this app: <https://yunohost.org/app_simple-torrent>
