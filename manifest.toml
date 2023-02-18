@@ -11,7 +11,6 @@ maintainers = ["eric_G"]
 
 [upstream]
 license = "AGPL-3.0-only"
-website = "https://github.com/boypt/simple-torrent"
 admindoc = "https://github.com/boypt/simple-torrent/wiki"
 code = "https://github.com/boypt/simple-torrent"
 
@@ -19,7 +18,7 @@ code = "https://github.com/boypt/simple-torrent"
 yunohost = ">= 11.1.7"
 architectures = ["amd64","i386", "arm64"]
 multi_instance = true
-ldap = "false"
+ldap = false
 sso = false
 disk = "50M"
 ram.build = "50M"
