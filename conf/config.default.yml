@@ -41,7 +41,7 @@ EnableUpload: true
 EnableSeeding: true
 # EnableSeeding Whether upload even after there's nothing further for us. By default uploading is not altruistic, we'll only upload to encourage the peer to reciprocate.
 
-IncomingPort: __PEER_PORT__
+IncomingPort: __PORT_PEER__
 # IncomingPort The port SimpleTorrent listens to.
 
 DoneCmd: ""
