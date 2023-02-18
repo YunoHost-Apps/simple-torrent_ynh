@@ -41,6 +41,8 @@ then
 	popd
 fi
 
+chmod 750 "$install_dir"
+chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
 chmod +x $install_dir/$app
 
