@@ -1,0 +1,10 @@
+test_format = 1.0
+
+[default]
+
+    # -------------------------------
+    # Commits to test upgrade from
+    # -------------------------------
+
+    test_upgrade_from.bbce7cfa.name = "Upgrade from 1.3.7"
+    
