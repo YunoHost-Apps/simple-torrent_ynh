@@ -36,9 +36,9 @@ then
 	ynh_setup_source --dest_dir=$install_dir --keep="config.yml"
 
 	pushd "$install_dir"
-		gzip --decompress $YNH_ARCH.gz
-		mv $YNH_ARCH $app
-	popd
+	    gzip --decompress main --to-stdout > main_dezipped
+	    mv main_dezipped $app
+        popd
 fi
 
 chmod -R o-rwx "$install_dir"
