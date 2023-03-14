@@ -18,8 +18,8 @@ ynh_script_progression --message="Setting up source files..." --weight=4
 ynh_setup_source --dest_dir=$install_dir
 
 pushd "$install_dir"
-	gzip --decompress main.gz
-	mv main $app
+	gzip --decompress main --to-stdout > main_dezipped
+	mv main_dezipped $app
 popd
 
 chmod -R o-rwx "$install_dir"
