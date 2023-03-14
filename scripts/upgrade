@@ -33,15 +33,14 @@ then
 	ynh_script_progression --message="Upgrading source files..." --weight=5
 
 	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir=$install_dir --source_id=$YNH_ARCH --keep="config.yml"
+	ynh_setup_source --dest_dir=$install_dir --keep="config.yml"
 
 	pushd "$install_dir"
-		gzip --decompress $YNH_ARCH.gz
-		mv $YNH_ARCH $app
-	popd
+	    gzip --decompress main --to-stdout > main_dezipped
+	    mv main_dezipped $app
+        popd
 fi
 
-chmod 750 "$install_dir"
 chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
 chmod +x $install_dir/$app

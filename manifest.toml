@@ -5,7 +5,7 @@ name = "Simple Torrent"
 description.en = "Self-hosted remote torrent client"
 description.fr = "Client torrent distant auto-hébergé"
 
-version = "1.3.9~ynh6"
+version = "1.3.9~ynh7"
 
 maintainers = ["eric_G"]
 
@@ -15,7 +15,7 @@ admindoc = "https://github.com/boypt/simple-torrent/wiki"
 code = "https://github.com/boypt/simple-torrent"
 
 [integration]
-yunohost = ">= 11.1.7"
+yunohost = ">= 11.1.15"
 architectures = ["amd64","i386", "arm64"]
 multi_instance = true
 ldap = false
@@ -33,10 +33,24 @@ ram.runtime = "50M"
     default = "/simple-torrent"
 
     [install.init_main_permission]
+    help.en = "If enabled, Simple Torrent will be accessible by people who do not have an account. This can be changed later via the webadmin."
+    help.fr = "Si cette case est cochée, Simple Torrent sera accessible aux personnes n’ayant pas de compte. Vous pourrez changer ceci plus tard via la webadmin."
     type = "group"
     default = "visitors"
 
 [resources]
+
+ [resources.sources]
+     [resources.sources.main]
+     amd64.url = "https://github.com/boypt/simple-torrent/releases/download/1.3.9/cloud-torrent_linux_amd64_static.gz"
+     amd64.sha256 = "d2f535e4cd0449b357a563cfce79c1f6afcac9b7b3af94e758defc44faa52ebf"
+     arm64.url = "https://github.com/boypt/simple-torrent/releases/download/1.3.9/cloud-torrent_linux_arm64_static.gz"
+     arm64.sha256 = "6f48f8b59bc8d834c6ede1d27ecc1a598b8a0be1dab00622caa6fd047e51eed6"
+     i386.url = "https://github.com/boypt/simple-torrent/releases/download/1.3.9/cloud-torrent_linux_386_static.gz"
+     i386.sha256 = "583898eb907c21dbbcb6f33934eae3dc1d6ec2620fdc7689c70a3479049af52b"
+    extract   = false
+    in_subdir = false
+
     [resources.system_user]
 
     [resources.install_dir]
