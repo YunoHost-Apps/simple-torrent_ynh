@@ -39,18 +39,6 @@ ynh_add_systemd_config
 yunohost service add $app --description="Self-hosted remote torrent client" --needs_exposed_ports="$port_peer" --log="/var/log/$app/$app.log"
 
 #=================================================
-# CREATE DATA DIRECTORY
-#=================================================
-ynh_script_progression --message="Creating a data directory..." --weight=1
-
-mkdir -p $data_dir/{torrents,downloads}
-
-# Set permissions to app files
-chmod 755 $data_dir/{torrents,downloads}
-chmod -R o-rwx $data_dir
-chown -R $app:www-data $data_dir
-
-#=================================================
 # MODIFY A CONFIG FILE
 #=================================================
 ynh_script_progression --message="Modifying a config file..." --weight=1
