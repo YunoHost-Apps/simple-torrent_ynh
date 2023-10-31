@@ -45,7 +45,7 @@ SimpleTorrent is a a self-hosted remote torrent client, written in Go (golang). 
 
 * Documentation officielle de l’admin : <https://github.com/boypt/simple-torrent/wiki>
 * Dépôt de code officiel de l’app : <https://github.com/boypt/simple-torrent>
-* Documentation YunoHost pour cette app : <https://yunohost.org/app_simple-torrent>
+* YunoHost Store: <https://apps.yunohost.org/app/simple-torrent>
 * Signaler un bug : <https://github.com/YunoHost-Apps/simple-torrent_ynh/issues>
 
 ## Informations pour les développeurs
